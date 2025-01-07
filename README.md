@@ -1,23 +1,13 @@
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/SebastiaanKlippert/go-wkhtmltopdf)](https://pkg.go.dev/github.com/SebastiaanKlippert/go-wkhtmltopdf)
-[![Go Report Card](https://goreportcard.com/badge/SebastiaanKlippert/go-wkhtmltopdf)](https://goreportcard.com/report/SebastiaanKlippert/go-wkhtmltopdf)
-[![codebeat badge](https://codebeat.co/badges/a6bb7f66-7ae2-4de8-8b61-623ef68096c9)](https://codebeat.co/projects/github-com-sebastiaanklippert-go-wkhtmltopdf-master)
-[![codecov](https://codecov.io/gh/SebastiaanKlippert/go-wkhtmltopdf/branch/master/graph/badge.svg)](https://codecov.io/gh/SebastiaanKlippert/go-wkhtmltopdf)
-
-[![Build Status](https://github.com/SebastiaanKlippert/go-wkhtmltopdf/actions/workflows/ubuntu.yml/badge.svg?branch=master)](https://github.com/SebastiaanKlippert/go-wkhtmltopdf/actions/workflows/ubuntu.yml)
-[![Build Status](https://github.com/SebastiaanKlippert/go-wkhtmltopdf/actions/workflows/macos.yml/badge.svg?branch=master)](https://github.com/SebastiaanKlippert/go-wkhtmltopdf/actions/workflows/macos.yml)
-
 # go-wkhtmltopdf
-Golang commandline wrapper for wkhtmltopdf
+Golang commandline wrapper for wkhtmltopdf forked from https://github.com/SebastiaanKlippert/go-wkhtmltopdf.
+This project was forked due to the existing project no longer being maintained and the potential risk of the existing project going away. Forking the project allows us to ensure accessibility to the existing library as we currently depend on it. Should the time come where we require something different, alternative libraries are available and can be explored. At the time of writing, however, our needs are minimal and fulfilled by this current iteration.
 
 See http://wkhtmltopdf.org/index.html for wkhtmltopdf docs.
 
-| :warning: WARNING          |
-|:---------------------------|
-| wkhtmltopdf is no longer maintained and now archived on GitHub. See https://wkhtmltopdf.org/status.html |
-| This go package is still maintained and will be for a while, but I recommend looking for alternatives for new projects. |
+# Source Library's Readme
+Below contains the README from the initial source library, also preserved in case access to the source repository becomes unreliable.
 
-
-# What and why
+## What and why
 We needed a way to generate PDF documents from Go. These vary from invoices with highly customizable lay-outs to reports with tables, graphs and images. In our opinion the best way to do this was by using HTML/CSS templates as source for our PDFs. Using CSS print media types and millimeters instead of pixel units we can generate very acurate PDF documents using wkhtmltopdf.
 
 go-wkhtmltopdf is a pure Golang wrapper around the wkhtmltopdf command line utility.
@@ -45,7 +35,7 @@ Note: You can also ignore the internal buffer and let wkhtmltopdf write directly
 
 For us this is one of the easiest ways to generate PDF documents from Go(lang) and performance is very acceptable.
 
-# Installation
+## Installation
 go get or use a Go dependency manager of your liking.
 
 ```
@@ -61,7 +51,7 @@ go-wkhtmltopdf finds the path to wkhtmltopdf by
 
 If you need to set your own wkhtmltopdf path or want to change it during execution, you can call SetPath().
 
-# Usage
+## Usage
 See testfile ```wkhtmltopdf_test.go``` for more complex options, a common use case test is in ```simplesample_test.go``` 
 
 ```go
@@ -120,7 +110,7 @@ html := "<html>Hi</html>"
 pdfgen.AddPage(NewPageReader(strings.NewReader(html)))
 ```
 
-# Saving to and loading from JSON
+## Saving to and loading from JSON
 
 The package now has the possibility to save the PDF Generator object as JSON and to create
 a new PDF Generator from a JSON file.
@@ -163,7 +153,7 @@ if err != nil {
 
 For an example of running this in AWS Lambda see https://github.com/SebastiaanKlippert/go-wkhtmltopdf-lambda
 
-# Speed 
+## Speed 
 The speed if pretty much determined by wkhtmltopdf itself, or if you use external source URLs, the time it takes to get and render the source HTML.
 
 The go wrapper time is negligible with around 0.04ms for parsing an above average number of commandline options.
