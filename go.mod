@@ -1,4 +1,4 @@
-module github.com/SebastiaanKlippert/go-wkhtmltopdf
+module github.com/splice/go-wkhtmltopdf
 
 go 1.19
 
